@@ -21,7 +21,6 @@ public class MergeSortDsc {
         merge(input, start, mid, end);
     }
 
-    // { 20, 35, -15, 7, 55, 1, -22 }
     public static void merge(int[] input, int start, int mid, int end) {
         if (input[mid] >= input[mid + 1]) return;
 
