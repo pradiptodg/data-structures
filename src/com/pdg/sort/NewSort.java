@@ -12,8 +12,8 @@ public class NewSort {
         Integer[] radixArray = { 4725, 4586, 1330, 8792, 1594, 5729 };
         List<Integer> sortedArray = newSort(Arrays.asList(radixArray), 3);
 
-        for (int x: sortedArray) {
-            System.out.println(x);
+        for (int n: sortedArray) {
+            System.out.println(n);
         }
     }
 
