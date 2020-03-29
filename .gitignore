@@ -16,3 +16,12 @@
 /out/production/UdemyDS/META-INF/UdemyDS.kotlin_module
 /.idea/uiDesigner.xml
 /.idea/vcs.xml
+/out/production/data-structures/com/pdg/sort/CountingSort.class
+/data-structures.iml
+/out/production/data-structures/com/pdg/sort/InsertionSort.class
+/out/production/data-structures/com/pdg/sort/MergeSort.class
+/out/production/data-structures/com/pdg/sort/NewSort.class
+/out/production/data-structures/com/pdg/sort/QuickSort.class
+/out/production/data-structures/com/pdg/sort/QuickSort2.class
+/out/production/data-structures/com/pdg/sort/RadixSort.class
+/out/production/data-structures/com/pdg/sort/ShellSort.class
