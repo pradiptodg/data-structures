@@ -1,6 +1,7 @@
 package com.pdg.sort;
 
 public class QuickSort {
+
     public static void main(String[] args) {
         int[] input = { 20, 35, -15, 7, 55, 1, -22 };
 
