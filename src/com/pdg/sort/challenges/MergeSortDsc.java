@@ -12,9 +12,7 @@ public class MergeSortDsc {
         }
     }
 
-    // { 20, 35, -15, 7, 55, 1, -22 }
     public static void mergeSort(int[] input, int start, int end) {
-//        System.out.println(start + " " + end);
         if (end <= start) return;
 
         int mid = (start + end) / 2;
