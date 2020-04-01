@@ -9,8 +9,6 @@ public class StringRadix {
         for (String s : arr) {
             System.out.print(s + " ");
         }
-        System.out.println();
-
     }
 
     public static void stringRadixSort(String[] input, int width) {
