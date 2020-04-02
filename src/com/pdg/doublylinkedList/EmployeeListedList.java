@@ -16,6 +16,7 @@ public class EmployeeListedList {
             tail = node;
         } else {
             head.setPrevious(node);
+            node.setNext(head);
         }
         head = node;
         size++;
@@ -26,8 +27,11 @@ public class EmployeeListedList {
         if (tail == null) {
             head = node;
         } else {
-
+            node.setPrevious(tail);
+            tail.setNext(node);
         }
+        tail = node;
+        size++;
     }
 
     public EmployeeNode removeFromFront() {
@@ -35,9 +39,35 @@ public class EmployeeListedList {
             return null;
         }
         EmployeeNode removedNode = head;
+
+        if (head.getNext() == null) {
+            tail = null;
+        } else {
+            EmployeeNode temp = head.getNext();
+            temp.setPrevious(null);
+        }
+
         head = head.getNext();
         size--;
         removedNode.setNext(null);
+        return removedNode;
+    }
+
+    public EmployeeNode removeFromEnd() {
+        if (isEmpty()) {
+            return null;
+        }
+        EmployeeNode removedNode = head;
+
+        if (tail.getPrevious() == null) {
+            tail = null;
+        } else {
+            EmployeeNode temp = tail.getPrevious();
+            temp.setNext(null);
+        }
+        tail = tail.getPrevious();
+        size--;
+        removedNode.setPrevious(null);
         return removedNode;
     }
 

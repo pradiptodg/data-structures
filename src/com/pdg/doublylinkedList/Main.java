@@ -9,20 +9,43 @@ public class Main {
         Employee marySmith = new Employee("Mary", "Smith", 22);
         Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
 
-        System.out.println(list.isEmpty());
+        System.out.println("isEmpty = " + list.isEmpty());
 
         list.addToFront(janeJones);
         list.addToFront(johnDoe);
         list.addToFront(marySmith);
         list.addToFront(mikeWilson);
 
-        System.out.println(list.removeFromFront());
+        list.printList();
+
+        System.out.println(list.getSize());
+
+        System.out.println("isEmpty = "+list.isEmpty());
+
+        Employee billEnd = new Employee("Bill", "End", 78);
+        list.addToEnd(billEnd);
 
         list.printList();
 
         System.out.println(list.getSize());
 
-        System.out.println(list.isEmpty());
+        System.out.println("isEmpty = "+list.isEmpty());
+
+        list.removeFromFront();
+
+        list.printList();
+
+        System.out.println(list.getSize());
+
+        System.out.println("isEmpty = "+list.isEmpty());
+
+        list.removeFromEnd();
+
+        list.printList();
+
+        System.out.println(list.getSize());
+
+        System.out.println("isEmpty = "+list.isEmpty());
 
 
     }
