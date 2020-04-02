@@ -1,6 +1,6 @@
 package com.pdg.doublylinkedList;
 
-public class EmployeeListedList {
+public class EmployeeDoublyListedList {
     private EmployeeNode head;
     private EmployeeNode tail;
     private int size;
@@ -20,6 +20,56 @@ public class EmployeeListedList {
         }
         head = node;
         size++;
+    }
+    public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
+
+        // Challenge #1
+        // return true if you were able to successfully add the employee
+        // into the list before the existing employee. Return false
+        // if the existing employee doesn't exist in the list
+
+//        EmployeeNode node = head;
+//        if (head.getEmployee().equals(newEmployee)) {
+//            addToFront(newEmployee);
+//            return true;
+//        }
+//        while (node.getNext() != null && !node.getNext().getEmployee().equals(existingEmployee) ) {
+//            node = node.getNext();
+//        }
+//
+//        if (node.getNext() == null) {
+//            return false;
+//        }
+//
+//        EmployeeNode nextNode = node.getNext();
+//        EmployeeNode newNode = new EmployeeNode(existingEmployee);
+//        node.setNext(newNode);
+//        newNode.setPrevious(node);
+//        newNode.setNext(nextNode);
+//        nextNode.setPrevious(newNode);
+//        size++;
+//
+//        return true;
+        EmployeeNode newNode = new EmployeeNode(newEmployee);
+        EmployeeNode curr = head;
+        while (curr != null && !curr.getEmployee().equals(existingEmployee)) {
+            curr = curr.getNext();
+        }
+
+        if (curr == null) return false;
+
+        EmployeeNode prev = curr.getPrevious();
+        if (prev == null) {
+            addToFront(newEmployee);
+        } else {
+            prev.setNext(newNode);
+            newNode.setPrevious(prev);
+            newNode.setNext(curr);
+            curr.setPrevious(newNode);
+            size++;
+        }
+
+        return true;
     }
 
     public void addToEnd(Employee employee) {
