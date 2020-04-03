@@ -4,14 +4,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-class ReverseLinkedListTest {
+class AdvancedLinkedListTest {
 
-    ReverseLinkedList linkedList;
+    AdvancedLinkedList linkedList;
 
     @BeforeEach
     void setUp() {
-        linkedList = new ReverseLinkedList();
+        linkedList = new AdvancedLinkedList();
     }
 
     @Test
@@ -37,5 +39,10 @@ class ReverseLinkedListTest {
         linkedList.reverse();
 
         assertEquals(linkedList.toString(), "HEAD -> 3 -> 2 -> 1 -> null");
+    }
+
+    @Test
+    void traverse() {
+
     }
 }

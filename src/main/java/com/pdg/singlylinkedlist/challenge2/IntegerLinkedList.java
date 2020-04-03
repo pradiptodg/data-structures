@@ -2,8 +2,8 @@ package com.pdg.singlylinkedlist.challenge2;
 
 public class IntegerLinkedList {
 
-    private IntegerNode head;
-    private int size;
+    protected IntegerNode head;
+    protected int size;
 
     public void addToFront(Integer value) {
         IntegerNode node = new IntegerNode(value);
