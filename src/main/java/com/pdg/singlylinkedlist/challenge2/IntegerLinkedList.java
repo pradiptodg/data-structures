@@ -1,23 +1,29 @@
 package com.pdg.singlylinkedlist.challenge2;
 
+import com.pdg.singlylinkedlist.ListNode;
+
 public class IntegerLinkedList {
 
-    protected IntegerNode head;
+    protected ListNode<Integer> head;
     protected int size;
 
+    public ListNode<Integer> getHead() {
+        return head;
+    }
+
     public void addToFront(Integer value) {
-        IntegerNode node = new IntegerNode(value);
+        ListNode<Integer> node = new ListNode<Integer>(value);
         node.setNext(head);
         head = node;
         size++;
     }
 
-    public IntegerNode removeFromFront() {
+    public ListNode<Integer> removeFromFront() {
         if (isEmpty()) {
             return null;
         }
 
-        IntegerNode removedNode = head;
+        ListNode<Integer> removedNode = head;
         head = head.getNext();
         size--;
         removedNode.setNext(null);
@@ -25,15 +31,15 @@ public class IntegerLinkedList {
     }
 
     public void insertSorted(Integer value) {
-        IntegerNode newNode = new IntegerNode(value);
+        ListNode<Integer> newNode = new ListNode<Integer>(value);
         if (isEmpty()) {
             head = newNode;
         } else if (head.getValue() > value) {
             newNode.setNext(head);
             head = newNode;
         } else {
-            IntegerNode curr = head;
-            IntegerNode prev = null;
+            ListNode<Integer> curr = head;
+            ListNode<Integer> prev = null;
             while (curr != null && value > curr.getValue()) {
                 prev = curr;
                 curr = curr.getNext();
@@ -55,7 +61,7 @@ public class IntegerLinkedList {
     }
 
     public void printList() {
-        IntegerNode current = head;
+        ListNode<Integer> current = head;
         System.out.print("HEAD -> ");
         while (current != null) {
             System.out.print(current);
@@ -68,7 +74,7 @@ public class IntegerLinkedList {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        IntegerNode current = head;
+        ListNode<Integer> current = head;
         sb.append("HEAD -> ");
         while (current != null) {
             sb.append(current);
