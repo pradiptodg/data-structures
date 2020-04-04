@@ -15,12 +15,12 @@ public class MergeSort {
     // { 20, 35, -15, 7, 55, 1, -22 }
     public static void mergeSort(int[] input, int start, int end) {
 //        System.out.println(start + " " + end);
-        if (end <= start) return;
-
-        int mid = (start + end) / 2;
-        mergeSort(input, start, mid);
-        mergeSort(input, mid+1, end);
-        merge(input, start, mid, end);
+        if (start < end) {
+            int mid = (start + end) / 2;
+            mergeSort(input, start, mid);
+            mergeSort(input, mid+1, end);
+            merge(input, start, mid, end);
+        }
     }
 
     // { 20, 35, -15, 7, 55, 1, -22 }
