@@ -54,6 +54,16 @@ class LLStackTest {
     @Test
     void testPopForEmpty() {
         assertThrows(EmptyStackException.class, () -> stack.pop());
+        assertThrows(EmptyStackException.class, () -> {
+            stack.push(marySmith);
+            stack.pop();
+            stack.pop();
+        });
+    }
+
+    @Test
+    void testPeekForEmpty() {
+        assertThrows(EmptyStackException.class, () -> stack.peek());
     }
 
 
