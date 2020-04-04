@@ -1,25 +1,29 @@
 package com.pdg.singlylinkedlist;
 
-public class EmployeeLinkedList {
-    private ListNode<Employee> head;
+public class SinglyLinkedList<T> {
+    private ListNode<T> head;
     private int size;
 
     public boolean isEmpty() {
         return head == null;
     }
 
-    public void addToFront(Employee employee) {
-        ListNode<Employee> node = new ListNode<>(employee);
+    public ListNode<T> getHead() {
+        return head;
+    }
+
+    public void addToFront(T employee) {
+        ListNode<T> node = new ListNode<>(employee);
         node.setNext(head);
         head = node;
         size++;
     }
 
-    public ListNode<Employee> removeFromFront() {
+    public ListNode<T> removeFromFront() {
         if (isEmpty()) {
             return null;
         }
-        ListNode<Employee> removedNode = head;
+        ListNode<T> removedNode = head;
         head = head.getNext();
         size--;
         removedNode.setNext(null);
@@ -27,7 +31,7 @@ public class EmployeeLinkedList {
     }
 
     public void printList() {
-        ListNode<Employee> current = head;
+        ListNode<T> current = head;
         System.out.print("HEAD -> ");
         while (current != null) {
             System.out.print(current + " -> ");

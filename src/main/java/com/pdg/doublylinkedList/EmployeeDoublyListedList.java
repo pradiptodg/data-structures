@@ -1,5 +1,7 @@
 package com.pdg.doublylinkedList;
 
+import com.pdg.model.Employee;
+
 public class EmployeeDoublyListedList {
     private EmployeeNode head;
     private EmployeeNode tail;

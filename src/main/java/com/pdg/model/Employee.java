@@ -1,4 +1,4 @@
-package com.pdg.singlylinkedlist;
+package com.pdg.model;
 
 import java.util.Objects;
 

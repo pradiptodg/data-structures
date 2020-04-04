@@ -3,8 +3,6 @@ package com.pdg.singlylinkedlist.extrachallenges;
 import com.pdg.singlylinkedlist.ListNode;
 import com.pdg.singlylinkedlist.challenge2.IntegerLinkedList;
 
-import java.util.LinkedList;
-
 public class AdvancedLinkedList extends IntegerLinkedList{
 
     private LinkedListSplitter splitter = new LinkedListSplitter();

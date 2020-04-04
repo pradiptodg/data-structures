@@ -1,5 +1,7 @@
 package com.pdg.doublylinkedList;
 
+import com.pdg.model.Employee;
+
 public class Main {
     public static void main(String[] args) {
         EmployeeDoublyListedList list = new EmployeeDoublyListedList();
