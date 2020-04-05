@@ -1,16 +1,18 @@
 package com.pdg.doublylinkedList;
 
-public class EmployeeDoublyListedList {
-    private EmployeeNode head;
-    private EmployeeNode tail;
+import com.pdg.model.Employee;
+
+public class DoublyListedList<T> {
+    private ListNode head;
+    private ListNode tail;
     private int size;
 
     public boolean isEmpty() {
         return head == null;
     }
 
-    public void addToFront(Employee employee) {
-        EmployeeNode node = new EmployeeNode(employee);
+    public void addToFront(T value) {
+        ListNode node = new ListNode(value);
         node.setNext(head);
         if (head == null) {
             tail = node;
@@ -21,7 +23,7 @@ public class EmployeeDoublyListedList {
         head = node;
         size++;
     }
-    public boolean addBefore(Employee newEmployee, Employee existingEmployee) {
+    public boolean addBefore(T newValue, T existingValue) {
 
         // Challenge #1
         // return true if you were able to successfully add the employee
@@ -50,17 +52,17 @@ public class EmployeeDoublyListedList {
 //        size++;
 //
 //        return true;
-        EmployeeNode newNode = new EmployeeNode(newEmployee);
-        EmployeeNode curr = head;
-        while (curr != null && !curr.getEmployee().equals(existingEmployee)) {
+        ListNode newNode = new ListNode(newValue);
+        ListNode curr = head;
+        while (curr != null && !curr.getEmployee().equals(existingValue)) {
             curr = curr.getNext();
         }
 
         if (curr == null) return false;
 
-        EmployeeNode prev = curr.getPrevious();
+        ListNode prev = curr.getPrevious();
         if (prev == null) {
-            addToFront(newEmployee);
+            addToFront(newValue);
         } else {
             prev.setNext(newNode);
             newNode.setPrevious(prev);
@@ -72,8 +74,8 @@ public class EmployeeDoublyListedList {
         return true;
     }
 
-    public void addToEnd(Employee employee) {
-        EmployeeNode node = new EmployeeNode(employee);
+    public void addToEnd(T value) {
+        ListNode node = new ListNode(value);
         if (tail == null) {
             head = node;
         } else {
@@ -84,16 +86,16 @@ public class EmployeeDoublyListedList {
         size++;
     }
 
-    public EmployeeNode removeFromFront() {
+    public ListNode removeFromFront() {
         if (isEmpty()) {
             return null;
         }
-        EmployeeNode removedNode = head;
+        ListNode removedNode = head;
 
         if (head.getNext() == null) {
             tail = null;
         } else {
-            EmployeeNode temp = head.getNext();
+            ListNode temp = head.getNext();
             temp.setPrevious(null);
         }
 
@@ -103,16 +105,16 @@ public class EmployeeDoublyListedList {
         return removedNode;
     }
 
-    public EmployeeNode removeFromEnd() {
+    public ListNode removeFromEnd() {
         if (isEmpty()) {
             return null;
         }
-        EmployeeNode removedNode = head;
+        ListNode removedNode = head;
 
         if (tail.getPrevious() == null) {
             tail = null;
         } else {
-            EmployeeNode temp = tail.getPrevious();
+            ListNode temp = tail.getPrevious();
             temp.setNext(null);
         }
         tail = tail.getPrevious();
@@ -122,7 +124,7 @@ public class EmployeeDoublyListedList {
     }
 
     public void printList() {
-        EmployeeNode current = head;
+        ListNode current = head;
         System.out.print("HEAD -> ");
         while (current != null) {
             System.out.print(current + " <=> ");

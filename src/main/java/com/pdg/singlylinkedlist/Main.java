@@ -1,8 +1,10 @@
 package com.pdg.singlylinkedlist;
 
+import com.pdg.model.Employee;
+
 public class Main {
     public static void main(String[] args) {
-        EmployeeLinkedList list = new EmployeeLinkedList();
+        SinglyLinkedList list = new SinglyLinkedList();
 
         Employee janeJones = new Employee("Jane", "Jones", 123);
         Employee johnDoe = new Employee("John", "Doe", 4567);
