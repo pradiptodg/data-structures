@@ -16,6 +16,7 @@ class ArrayStackTest {
     Employee johnDoe = new Employee("John", "Doe", 4567);
     Employee marySmith = new Employee("Mary", "Smith", 22);
     Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
+    Employee billEnd = new Employee("Bill", "End", 78);
 
     @BeforeEach
     void setUp() {
