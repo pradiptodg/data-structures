@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PalindromeCheckerTest {
 
-    String s1, s2, s3, s4, s5 = "I did, did I?";
+    String s1, s2, s3, s4, s5, s6, s7;
 
     @BeforeEach
     void setUp() {
@@ -17,6 +17,18 @@ class PalindromeCheckerTest {
         s3 = "I did, did I?";
         s4 = "hello";
         s5 = "Don't nod";
+        s6 = "";
+        s7 = " ";
+    }
+
+    @Test
+    void testCheckForPalindromeForEmpty() {
+        assertEquals(com.pdg.queue.challenges.PalindromeChecker.checkForPalindrome(s6), true);
+    }
+
+    @Test
+    void checkForPalindromeForSingle() {
+        assertEquals(com.pdg.queue.challenges.PalindromeChecker.checkForPalindrome(s7), true);
     }
 
     @Test
