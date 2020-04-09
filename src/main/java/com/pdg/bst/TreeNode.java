@@ -1,12 +1,12 @@
 package com.pdg.bst;
 
 public class TreeNode {
-    int value;
+    int data;
     TreeNode left;
     TreeNode right;
 
     public TreeNode(int value) {
-        this.value = value;
+        this.data = value;
     }
 
 }

@@ -53,4 +53,49 @@ class BinarySearchTreeTest {
         list = new ArrayList<>(Arrays.asList(20, 14, 1, 4, 30, 25));
         assertEquals(tree.preOrder(), list);
     }
+
+    @Test
+    void testGetForNull() {
+        assertEquals(tree.get(100), null);
+    }
+
+    @Test
+    void testGetForNormal() {
+        assertEquals(tree.get(1).data, 1);
+        assertEquals(tree.get(30).data, 30);
+        assertEquals(tree.get(20).data, 20);
+    }
+
+    @Test
+    void testMinForNormal() {
+        assertEquals(tree.min(), 1);
+    }
+
+    @Test
+    void testMinForNull() {
+        BinarySearchTree tree2 = new BinarySearchTree();
+        assertEquals(tree2.min(), null);
+    }
+
+    @Test
+    void testMaxForNormal() {
+        assertEquals(tree.max(), 30);
+    }
+
+    @Test
+    void testMaxForNull() {
+        BinarySearchTree tree2 = new BinarySearchTree();
+        assertEquals(tree2.max(), null);
+    }
+
+    @Test
+    void testLevelOrderForNormal() {
+        assertEquals(tree.levelOrder(), new ArrayList<>(Arrays.asList(20, 14, 30, 1, 25, 4)));
+    }
+
+    @Test
+    void testLevelOrderForNull() {
+        BinarySearchTree tree2 = new BinarySearchTree();
+        assertEquals(tree2.levelOrder(), new ArrayList<>());
+    }
 }
