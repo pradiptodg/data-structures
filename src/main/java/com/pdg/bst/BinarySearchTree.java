@@ -20,14 +20,18 @@ public class BinarySearchTree {
         return get(value, root);
      }
 
-     public Integer min() {
+     public void delete(int value) {
+        root = delete(value, root);
+     }
+
+     public TreeNode min() {
         if (root == null) {
             return null;
         }
         return min(root);
      }
 
-    public Integer max() {
+    public TreeNode max() {
         if (root == null) {
             return null;
         }
@@ -103,17 +107,41 @@ public class BinarySearchTree {
         }
     }
 
-    private int min(TreeNode node) {
+
+    private TreeNode delete(int value, TreeNode root) {
+        if (root == null) return root;
+        else if (value < root.data) {
+            root.left = delete(value, root.left);
+        } else if (value > root.data) {
+            root.right = delete(value, root.right);
+        } else {  // if the value has been found, i.e value == root.data
+            // no child
+            if (root.left == null && root.right == null) {
+                return null;
+            } else if (root.left == null) {
+                return root.right;
+            } else if (root.right == null) {
+                return root.left;
+            } else {
+                TreeNode temp = min(root.right);
+                root.data = temp.data;
+                delete(temp.data, temp);
+            }
+        }
+        return root;
+    }
+
+    private TreeNode min(TreeNode node) {
         if (node.left == null) {
-            return node.data;
+            return node;
         }
 
         return min(node.left);
     }
 
-    private int max(TreeNode node) {
+    private TreeNode max(TreeNode node) {
         if (node.right == null) {
-            return node.data;
+            return node;
         }
 
         return max(node.right);

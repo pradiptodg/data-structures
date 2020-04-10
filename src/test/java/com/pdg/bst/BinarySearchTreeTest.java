@@ -68,7 +68,7 @@ class BinarySearchTreeTest {
 
     @Test
     void testMinForNormal() {
-        assertEquals(tree.min(), 1);
+        assertEquals(tree.min().data, 1);
     }
 
     @Test
@@ -79,7 +79,7 @@ class BinarySearchTreeTest {
 
     @Test
     void testMaxForNormal() {
-        assertEquals(tree.max(), 30);
+        assertEquals(tree.max().data, 30);
     }
 
     @Test
@@ -97,5 +97,24 @@ class BinarySearchTreeTest {
     void testLevelOrderForNull() {
         BinarySearchTree tree2 = new BinarySearchTree();
         assertEquals(tree2.levelOrder(), new ArrayList<>());
+    }
+
+    @Test
+    void testDeleteForNull() {
+        BinarySearchTree tree2 = new BinarySearchTree();
+        tree2.delete(30);
+        assertEquals(tree2.root, null);
+    }
+
+    @Test
+    void testDeleteForTwoChildren() {
+        tree.delete(20);
+        assertEquals(tree.root.data, 25);
+    }
+
+    @Test
+    void testDeleteForOneChild() {
+        tree.delete(30);
+        assertEquals(tree.max().data, 25);
     }
 }
