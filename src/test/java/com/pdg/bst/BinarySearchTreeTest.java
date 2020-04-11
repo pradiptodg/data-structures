@@ -1,5 +1,6 @@
 package com.pdg.bst;
 
+import com.pdg.binarytree.BinarySearchTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -103,18 +104,33 @@ class BinarySearchTreeTest {
     void testDeleteForNull() {
         BinarySearchTree tree2 = new BinarySearchTree();
         tree2.delete(30);
-        assertEquals(tree2.root, null);
+        assertEquals(tree2.getRoot(), null);
     }
 
     @Test
     void testDeleteForTwoChildren() {
         tree.delete(20);
-        assertEquals(tree.root.data, 25);
+        assertEquals(tree.getRoot().data, 25);
     }
 
     @Test
     void testDeleteForOneChild() {
         tree.delete(30);
         assertEquals(tree.max().data, 25);
+    }
+
+    @Test
+    void testHeight() {
+        BinarySearchTree tree3 = new BinarySearchTree();
+        assertEquals(tree.height(), 3);
+        assertEquals(tree3.height(), 0);
+    }
+
+    @Test
+    void testMirror() {
+        tree.mirror();
+        assertEquals(tree.min().data, 30);
+        assertEquals(tree.max().data, 1);
+        assertEquals(tree.levelOrder().toString(), "[20, 30, 14, 25, 1, 4]");
     }
 }
