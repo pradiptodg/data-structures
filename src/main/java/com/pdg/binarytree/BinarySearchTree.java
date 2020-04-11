@@ -1,12 +1,18 @@
-package com.pdg.bst;
+package com.pdg.binarytree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class BinarySearchTree {
-    TreeNode root;
+public class BinarySearchTree extends BinaryTree {
+
+    public BinarySearchTree() {
+    }
+
+    public BinarySearchTree(int[] input) {
+        root = setUp(0, input.length - 1, input);
+    }
 
     public void insert(int data) {
         if (root == null) {
@@ -38,41 +44,16 @@ public class BinarySearchTree {
         return max(root);
     }
 
-    public List<Integer> postOrder() {
-        List<Integer> list = new ArrayList<>();
-        postOrder(root, list);
-        return list;
-    }
-
-    public List<Integer> inOrder() {
-        List<Integer> list = new ArrayList<>();
-        inOrder(root, list);
-        return list;
-    }
-
-    public List<Integer> preOrder() {
-        List<Integer> list = new ArrayList<>();
-        preOrder(root, list);
-        return list;
-    }
-
-    public List<Integer> levelOrder() {
-        if (root == null) {
-            return new ArrayList<>();
+    private TreeNode setUp(int start, int end, int[] input) {
+        if (start > end) {
+            return null;
         }
-        List<Integer> list = new ArrayList<>();
-        Queue<TreeNode> q = new LinkedList<>();
-        q.add(root);
-        while (!q.isEmpty()) {
-            TreeNode node = q.remove();
-            if (node.left != null) q.add(node.left);
-            if (node.right != null) q.add(node.right);
-            list.add(node.data);
-        }
-
-        return list;
+        int mid = (start + end) / 2;
+        TreeNode node = new TreeNode(input[mid]);
+        node.left = setUp(start, mid - 1, input);
+        node.right = setUp(mid + 1, end, input);
+        return node;
     }
-
 
     private void insert(int data, TreeNode root) {
         if (data == root.data) {
@@ -146,42 +127,5 @@ public class BinarySearchTree {
 
         return max(node.right);
     }
-
-    private void postOrder(TreeNode node, List<Integer> list) {
-        if (node == null) {
-            return;
-        }
-
-        postOrder(node.left, list);
-        postOrder(node.right, list);
-        list.add(node.data);
-
-    }
-
-    private void inOrder(TreeNode node, List<Integer> list) {
-        if (node == null) {
-            return;
-        }
-
-        inOrder(node.left, list);
-        list.add(node.data);
-        inOrder(node.right, list);
-
-
-    }
-
-    private void preOrder(TreeNode node, List<Integer> list) {
-        if (node == null) {
-            return;
-        }
-
-        list.add(node.data);
-        preOrder(node.left, list);
-        preOrder(node.right, list);
-
-
-    }
-
-
 
 }
