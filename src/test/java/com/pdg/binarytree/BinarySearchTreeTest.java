@@ -1,12 +1,10 @@
-package com.pdg.bst;
+package com.pdg.binarytree;
 
 import com.pdg.binarytree.BinarySearchTree;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -69,7 +67,7 @@ class BinarySearchTreeTest {
 
     @Test
     void testMinForNormal() {
-        assertEquals(tree.min().data, 1);
+        assertEquals(tree.min(), 1);
     }
 
     @Test
@@ -80,7 +78,7 @@ class BinarySearchTreeTest {
 
     @Test
     void testMaxForNormal() {
-        assertEquals(tree.max().data, 30);
+        assertEquals(tree.max(), 30);
     }
 
     @Test
@@ -116,7 +114,7 @@ class BinarySearchTreeTest {
     @Test
     void testDeleteForOneChild() {
         tree.delete(30);
-        assertEquals(tree.max().data, 25);
+        assertEquals(tree.max(), 25);
     }
 
     @Test
@@ -129,8 +127,19 @@ class BinarySearchTreeTest {
     @Test
     void testMirror() {
         tree.mirror();
-        assertEquals(tree.min().data, 30);
-        assertEquals(tree.max().data, 1);
+        assertEquals(tree.min(), 30);
+        assertEquals(tree.max(), 1);
         assertEquals(tree.levelOrder().toString(), "[20, 30, 14, 25, 1, 4]");
+    }
+
+    @Test
+    void testIterator() {
+        List<Integer> actual = new ArrayList<>();
+        for (TreeNode node: tree) {
+            actual.add(node.data);
+        }
+
+        List<Integer> expected = new ArrayList<>(Arrays.asList(1, 4, 14, 20, 25, 30));
+        assertEquals(expected, actual);
     }
 }

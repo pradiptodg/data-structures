@@ -1,11 +1,8 @@
 package com.pdg.binarytree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
-public class BinarySearchTree extends BinaryTree {
+public class BinarySearchTree extends BinaryTree implements Iterable<TreeNode> {
 
     public BinarySearchTree() {
     }
@@ -22,26 +19,28 @@ public class BinarySearchTree extends BinaryTree {
         }
     }
 
-     public TreeNode get(int value) {
+    public TreeNode get(int value) {
         return get(value, root);
-     }
+    }
 
-     public void delete(int value) {
+    public void delete(int value) {
         root = delete(value, root);
-     }
+    }
 
-     public TreeNode min() {
+    @Override
+    public Integer min() {
         if (root == null) {
             return null;
         }
-        return min(root);
-     }
+        return min(root).data;
+    }
 
-    public TreeNode max() {
+    @Override
+    public Integer max() {
         if (root == null) {
             return null;
         }
-        return max(root);
+        return max(root).data;
     }
 
     private TreeNode setUp(int start, int end, int[] input) {
@@ -128,4 +127,8 @@ public class BinarySearchTree extends BinaryTree {
         return max(node.right);
     }
 
+    @Override
+    public Iterator<TreeNode> iterator() {
+        return new BinarySearchTreeIterator(root);
+    }
 }

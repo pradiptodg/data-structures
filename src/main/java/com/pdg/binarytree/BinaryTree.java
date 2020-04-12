@@ -1,14 +1,19 @@
 package com.pdg.binarytree;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class BinaryTree {
 
 
     TreeNode root;
+
+    public BinaryTree() {
+
+    }
+
+    public BinaryTree(TreeNode root) {
+        this.root = root;
+    }
 
     public TreeNode getRoot() {
         return root;
@@ -54,8 +59,30 @@ public class BinaryTree {
         return list;
     }
 
+    public Integer min() {
+        return min(root);
+    }
+
+    public Integer max() {
+        return max(root);
+    }
+
     public void mirror() {  // disrupts the BST property
         mirror(root);
+    }
+
+    public int sum() {
+        return sum(root);
+    }
+
+    public int size() {
+        return size(root);
+    }
+
+    public List<Integer> getAllLeaves() {
+        List<Integer> list = new ArrayList<>();
+        getAllLeaves(root, list);
+        return list;
     }
 
     private Integer height(TreeNode node) {
@@ -111,4 +138,58 @@ public class BinaryTree {
         mirror(node.right);
     }
 
+    private int sum(TreeNode node) {
+        if (node == null) return 0;
+        return node.data + sum(node.left) + sum(node.right);
+    }
+
+    private int size(TreeNode node) {
+        if (node == null) return 0;
+        return 1 + size(node.left) + size(node.right);
+    }
+
+    private int min(TreeNode node) {
+        if (node == null) return Integer.MAX_VALUE;
+        int left = min(node.left);
+        int right = min(node.right);
+
+        return Math.min(Math.min(left, right), node.data);
+    }
+
+    private int max(TreeNode node) {
+        if (node == null) return Integer.MIN_VALUE;
+        int left = max(node.left);
+        int right = max(node.right);
+
+        return Math.max(Math.max(left, right), node.data);
+    }
+
+    private void getAllLeaves(TreeNode node, List<Integer> list) {
+        if (node == null) return;
+        if (node.left == null && node.right == null) list.add(node.data);
+        else {
+            getAllLeaves(node.left, list);
+            getAllLeaves(node.right, list);
+        }
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BinaryTree)) return false;
+        BinaryTree that = (BinaryTree) o;
+        return equals(root, that.root);
+    }
+
+    private boolean equals(TreeNode node1, TreeNode node2) {
+        if (node1 == null && node2 == null) return true;
+        else if (node1 == null || node2 == null) return false;
+        else return node1.data == node2.data && equals(node1.left, node2.left) && equals(node1.right, node2.right);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(root);
+    }
 }

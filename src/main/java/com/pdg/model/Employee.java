@@ -2,7 +2,7 @@ package com.pdg.model;
 
 import java.util.Objects;
 
-public class Employee {
+public class Employee{
     private String firstName;
     private String lastName;
     private int id;
@@ -60,4 +60,9 @@ public class Employee {
                 ", id=" + id +
                 '}';
     }
+
+//    @Override
+//    public int compareTo(Employee o) {
+//        return o.id - this.id;
+//    }
 }
