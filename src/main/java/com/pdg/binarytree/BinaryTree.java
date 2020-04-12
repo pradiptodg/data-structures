@@ -7,6 +7,14 @@ public class BinaryTree {
 
     TreeNode root;
 
+    public BinaryTree() {
+
+    }
+
+    public BinaryTree(TreeNode root) {
+        this.root = root;
+    }
+
     public TreeNode getRoot() {
         return root;
     }
@@ -71,6 +79,12 @@ public class BinaryTree {
         return size(root);
     }
 
+    public List<Integer> getAllLeaves() {
+        List<Integer> list = new ArrayList<>();
+        getAllLeaves(root, list);
+        return list;
+    }
+
     private Integer height(TreeNode node) {
         if (node == null) {
             return 0;
@@ -131,7 +145,7 @@ public class BinaryTree {
 
     private int size(TreeNode node) {
         if (node == null) return 0;
-        return 1 + sum(node.left) + sum(node.right);
+        return 1 + size(node.left) + size(node.right);
     }
 
     private int min(TreeNode node) {
@@ -148,6 +162,16 @@ public class BinaryTree {
         int right = max(node.right);
 
         return Math.max(Math.max(left, right), node.data);
+    }
+
+    private void getAllLeaves(TreeNode node, List<Integer> list) {
+        if (node == null) return;
+        if (node.left == null && node.right == null) list.add(node.data);
+        else {
+            getAllLeaves(node.left, list);
+            getAllLeaves(node.right, list);
+        }
+
     }
 
     @Override
