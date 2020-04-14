@@ -1,5 +1,6 @@
 package com.pdg.heap;
 
+import com.pdg.sort.HeapSort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -66,6 +67,13 @@ class MaxHeapTest {
     @Test
     void testSort() {
         int[] array = {10, 8, 6, 1, 2, 7, 9};
+        int[] actual = {1, 2, 6, 7, 8, 9, 10};
+        HeapSort heapSort = new HeapSort();
+        heapSort.sort(array);
 
+        for (int i = 0; i < array.length; i++) {
+            assertEquals(array[i], actual[i]);
+        }
     }
+
 }
